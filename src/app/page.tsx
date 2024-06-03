@@ -1,3 +1,5 @@
+import Main from "@/pages/Main";
+
 export default function Home() {
-  return <div>temp</div>;
+  return <Main />;
 }
