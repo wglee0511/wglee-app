@@ -1,4 +1,5 @@
 import useDeviceSize from "@/hooks/useDeviceSize";
+import Icon from "@/resource/icons/Icon";
 import { COLORS } from "@/style/colors";
 import { getColorWithOpacity } from "@/style/utils";
 import React from "react";
@@ -19,58 +20,65 @@ const S = {
     width: 100vw;
   `,
   SmallWrapper: styled.div`
-    width: 70vw;
+    width: 60vw;
   `,
-  CommonStyle: styled.button`
+  CommonStyle: styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
     width: 100%;
-    padding: 16px 10px;
-    background-color: ${getColorWithOpacity(COLORS.gray100, 0.1)};
-    border: 2px solid ${COLORS.gray100};
-    border-radius: 15px;
-    font-size: 30px;
+    padding: 16px 30px;
+    background-color: ${getColorWithOpacity(COLORS.gray600, 0.5)};
+    border-radius: 30px;
     font-weight: 700;
+  `,
 
+  ContactButton: styled.button`
+    background-color: transparent;
+    border: none;
+    padding: 3px;
+    border-radius: 3px;
     cursor: pointer;
 
-    &:hover {
-      border: 2px solid ${COLORS.gray700};
-      color: ${COLORS.gray700};
-    }
-
-    @media (hover: hover) {
+    @media (hover: hover) and (pointer: fine) {
       /* when supported */
-      a:hover {
-        color: white;
-        border: 2px solid ${COLORS.gray100};
+      &:hover {
+        background-color: ${COLORS.gray700};
       }
     }
   `,
 };
 
 const TopNavigation = () => {
-  const { isDesktop, isMobile } = useDeviceSize();
-  console.log("isMobile: ", isMobile);
-  console.log("isDesktop: ", isDesktop);
+  const { isMobile } = useDeviceSize();
+
   return (
     <S.Container>
       {isMobile ? (
         <S.Wrapper>
-          <S.CommonStyle>
-            <div />
+          <S.CommonStyle
+            style={{
+              fontSize: "21px",
+            }}
+          >
             <div>TopNavigation</div>
-            <div>Contact</div>
+            <S.ContactButton>
+              <Icon icon="HamburgerIcon" size={20} />
+            </S.ContactButton>
           </S.CommonStyle>
         </S.Wrapper>
       ) : (
         <S.SmallWrapper>
-          <S.CommonStyle>
-            <div />
+          <S.CommonStyle
+            style={{
+              fontSize: "30px",
+            }}
+          >
             <div>TopNavigation</div>
-            <div>Contact</div>
+            <S.ContactButton>
+              <Icon icon="HamburgerIcon" size={20} />
+            </S.ContactButton>
           </S.CommonStyle>
         </S.SmallWrapper>
       )}

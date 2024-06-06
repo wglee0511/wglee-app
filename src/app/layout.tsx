@@ -1,14 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import StyledComponentsRegistry from "@/style/register";
 import Provider from "@/components/Provider";
+import { Noto_Sans_KR } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansKr = Noto_Sans_KR({
+  weight: ["500"],
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: "개발자 이원교",
-  description: "개인 프론트엔드 개발 포트폴이오",
+  title: "이원교",
+  description: "프론트엔드 개발 포트폴이오",
 };
 
 export const viewport: Viewport = {
@@ -45,7 +48,7 @@ export default function RootLayout({
           href="/icons/favicon-16x16.png"
         />
       </head>
-      <body className={inter.className}>
+      <body className={notoSansKr.className}>
         <StyledComponentsRegistry>
           <Provider>{children}</Provider>
         </StyledComponentsRegistry>

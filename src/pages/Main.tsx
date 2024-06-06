@@ -1,4 +1,4 @@
-import TopNavigation from "@/components/TopNavigation";
+import dynamic from "next/dynamic";
 import React from "react";
 import styled from "styled-components";
 
@@ -14,6 +14,10 @@ const S = {
 };
 
 const Main = () => {
+  const TopNavigation = dynamic(() => import("@/components/TopNavigation"), {
+    ssr: false,
+  });
+
   return (
     <S.Container>
       <TopNavigation />
